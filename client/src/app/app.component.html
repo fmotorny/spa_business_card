@@ -1,2 +1,4 @@
-<h1>TES2</h1>
-
+<div *ngFor="let product of (products$ | async)?.data">
+  {{ product.attributes.title }}
+</div>
+<h2>TTT!!</h2>
