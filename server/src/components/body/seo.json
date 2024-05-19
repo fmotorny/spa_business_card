@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_body_seos",
+  "info": {
+    "displayName": "SEO",
+    "icon": "briefcase"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}
