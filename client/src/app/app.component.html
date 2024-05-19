@@ -1,4 +1,12 @@
-<div *ngFor="let product of (products$ | async)?.data">
-  {{ product.attributes.title }}
-</div>
-<h2>TTT!!</h2>
+<nav>
+  <a routerLink="/">Main</a>
+  <a routerLink="/about-us">About us</a>
+</nav>
+
+<router-outlet></router-outlet>
+
+
+<!--<div *ngFor="let product of (products$ | async)?.data">-->
+<!--  {{ product.attributes.title }}-->
+<!--</div>-->
+<!--<h2>TTT!!</h2>-->
