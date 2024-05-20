@@ -4,14 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration=production",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "serve:prerender": "http-server -c-1 dist/client/browser",
     "dev:ssr": "ng run client:serve-ssr",
     "serve:ssr": "node dist/client/server/main.js",
-    "build:ssr": "ng build && ng run client:server",
+    "build:ssr": "ng build --configuration=production && ng run client:server",
     "prerender": "ng run client:prerender"
   },
   "private": true,
