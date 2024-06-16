@@ -1,0 +1,48 @@
+@import "_colors";
+@import "button_animate";
+
+.feedback_box {
+  display: flex;
+  color: #fff;
+  border-radius: 30px;
+  overflow: hidden;
+}
+.bg {
+  width: 355px;
+  background: url("/assets/images/render_feedback.jpg") no-repeat center;
+  background-size: cover;
+}
+.form {
+  backdrop-filter: blur(5px);
+  background: rgba(27, 20, 43, 0.7);
+  padding: 30px;
+  text-align: center;
+}
+
+.pre {
+  padding: 15px 0 25px;
+}
+
+.control_box {
+  margin-bottom: 15px;
+}
+
+.agreed {
+  display: flex;
+  font-size: 11px;
+  color: #bbbbbb;
+  padding-bottom: 30px;
+  align-items: center;
+  &:hover {
+    background: none;
+  }
+  a {
+    color: $bronze;
+  }
+
+  input[type="checkbox"] {
+    cursor: pointer;
+    height: 16px;
+    accent-color: $bronze;
+  }
+}

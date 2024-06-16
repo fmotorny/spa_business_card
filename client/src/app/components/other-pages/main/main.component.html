@@ -1,0 +1,61 @@
+<ngx-slick-carousel
+  class="carousel"
+  #slickModal="slick-carousel"
+  [config]="slideConfig"
+>
+  @for (slide of slides; track slide.img) {
+    <div ngxSlickItem class="slide">
+      <div class="main-slide">
+        <div
+          class="main-slide__img"
+          [ngStyle]="{ 'background-image': ' url(' + slide.img + ')' }"
+        ></div>
+        <div class="main-slide__content">
+          <div class="main-slide__title">{{ slide.title }}</div>
+          <div class="main-slide__description">
+            {{ slide.desc }}
+          </div>
+          <div class="main-slide__more">
+            @if (slide.id === 1 || slide.id === 3) {
+              <button style="width: 200px" class="btn-more-animate learn-more">
+                <span class="circle" aria-hidden="true">
+                  <span class="icon arrow"></span>
+                </span>
+                <span class="button-text white">Видео о проекте</span>
+              </button>
+            }
+            @if (slide.id === 2 || slide.id === 4) {
+              <a
+                routerLink="/"
+                style="width: 213px"
+                class="btn-more-animate learn-more"
+              >
+                <span class="circle" aria-hidden="true">
+                  <span class="icon arrow"></span>
+                </span>
+                <span class="button-text white">Смотреть локацию</span>
+              </a>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</ngx-slick-carousel>
+
+<div class="info_bar_box">
+  <div class="bar">
+    <div class="video">
+      <mat-icon>smart_display</mat-icon>
+      Видео <br>
+      о проекте
+    </div>
+    <div class="plan">
+      <mat-icon>map</mat-icon>
+      Смотреть <br>
+      генплан
+    </div>
+
+  </div>
+</div>
+

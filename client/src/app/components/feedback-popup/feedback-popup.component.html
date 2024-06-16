@@ -1,0 +1,30 @@
+<div class="popup_base_box">
+  <button class="close_popup_btn" appBaseClosePopup>
+    <mat-icon> close </mat-icon>
+  </button>
+  <div class="feedback_box">
+    <div class="bg"></div>
+    <div class="form">
+      <img width="60" src="/assets/images/bronze_small.png" alt="" />
+      <div class="pre">
+        Оставьте свой номер, и мы перезвоним вам
+      </div>
+      <div class="control_box">
+        <input type="text" placeholder="Ваше имя" [formControl]="form.controls.name">
+      </div>
+      <div class="control_box">
+        <input type="number" placeholder="Ваш телефон*" [formControl]="form.controls.phone">
+      </div>
+      <label class="agreed">
+        <input type="checkbox" [formControl]="form.controls.agreed">
+        <span>Вы даете согласие на <a routerLink="/privacy-policy" appBaseClosePopup>обработку персональных данных</a></span>
+      </label>
+      <button (click)="send()" style="width: 210px;" class="btn-more-animate learn-more">
+          <span class="circle" aria-hidden="true">
+            <span class="icon arrow"></span>
+          </span>
+        <span class="button-text white">Отправить заявку</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,256 @@
+@import "_colors";
+@import "button_animate";
+
+
+mat-toolbar {
+  position: fixed;
+  top: 0;
+  z-index: 2;
+}
+
+mat-sidenav-container {
+ // height: 100%;
+  height: 100vh;
+}
+
+// Move the content down so that it won't be hidden by the toolbar
+mat-sidenav {
+//  padding-top: 3.5rem;
+  transition: width 0.3s ease;
+  color: #fff;
+  background: #1B142B;
+  border: none;
+  @media screen and (min-width: 600px) {
+  //  padding-top: 4rem;
+  }
+
+  .entry {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+  }
+}
+
+// Move the content down so that it won't be hidden by the toolbar
+mat-sidenav-content {
+  overflow-x: hidden;
+ // padding-top: 3.5rem;
+  @media screen and (min-width: 600px) {
+    padding-top: 80px;
+  }
+}
+
+.expanded {
+  width: 250px;
+}
+
+.logo {
+  text-align: center;
+  padding-top: 20px;
+
+  img {
+    width: 70px;
+  }
+  a {
+    text-decoration: none;
+    color: $bronze;
+  }
+  .pre1 {
+    display: block;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+  .pre2 {
+    display: block;
+    font-size: 12px;
+    margin-top: -3px;
+  }
+}
+
+.nav {
+  text-align: center;
+  margin-top: 30px;
+  a {
+    text-decoration: none;
+    color: $white;
+    height: 40px;
+    display: block;
+    position: relative;
+
+    .circle {
+      @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+      position: relative;
+      display: block;
+      margin: 0;
+      width: 0;
+      height: 100%;
+      background: $bronze;
+    }
+
+    .button-text {
+      @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &:hover {
+        color: $bronze;
+      }
+    }
+
+    &.active {
+      .circle {
+        width: 100%;
+        .icon {
+          &.arrow {
+            background: $white;
+            transform: translate(1rem, 0);
+          }
+        }
+      }
+      .button-text {
+        color: $white;
+      }
+    }
+  }
+}
+
+.btn-hover {
+  width: 110px;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  margin: 0 auto;
+  height: 110px;
+  text-align:center;
+  border: none;
+  background-size: 300% 100%;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  transition: all .4s ease-in-out;
+  text-decoration: none;
+  flex-flow: column;
+  margin-top: 30px;
+  mat-icon {
+    margin-bottom: 5px;
+  }
+}
+
+.btn-hover:hover {
+  background-position: 100% 0;
+
+  transition: all .2s ease-in-out;
+}
+
+.btn-hover.color-11 {
+  background-image: linear-gradient(to right, #A67C52, #A67C52, #bd9d7d, #A67C52, #A67C52);
+}
+
+.foot {
+  padding-top: 30px;
+  position: absolute;
+  bottom: 0;
+}
+.rights {
+  font-size: 11px;
+  text-align: center;
+  color: #ececec;
+  padding-bottom: 15px;
+}
+
+.privacy {
+  text-align: center;
+  font-size: 10px;
+  a {
+    font-size: 11px;
+    color: $white;
+    text-decoration: none;
+    transition: all ease 0.2s;
+    &:hover {
+      color: $bronze;
+    }
+  }
+  span {
+    display: block;
+    color: #bbbbbb;
+    padding: 15px;
+    opacity: 0.9;
+  }
+}
+
+header {
+  position: absolute;
+  z-index: 98;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 80px;
+  padding: 0 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: $white;
+}
+
+main {
+ // padding: 80px 0 0 0;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+.address_top {
+  cursor: pointer;
+  display: flex;
+  .address {
+    padding-left: 10px;
+    color: $white;
+    span {
+      color: $gray;
+    }
+  }
+}
+
+.safety {
+  display: flex;
+  color: #fff;
+  text-decoration: none;
+  .text {
+    padding-left: 10px;
+  }
+}
+
+.phone_box {
+  display: flex;
+  align-items: center;
+  .phone {
+    padding-right: 10px;
+    font-size: 19px;
+  }
+}
+
+.call_box {
+  position: absolute;
+  bottom: 30px;
+  right: 60px;
+  .trin-trin {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+
+
+

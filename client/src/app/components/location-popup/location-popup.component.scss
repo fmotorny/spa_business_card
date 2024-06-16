@@ -1,0 +1,13 @@
+iframe {
+  border: none;
+  width: 100%;
+  border-radius: 30px;
+  overflow: hidden;
+}
+.map {
+  position: relative;
+  display: flex;
+  height: calc(100vh - 120px);
+  width: calc(100vw - 120px);
+
+}

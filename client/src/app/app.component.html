@@ -1,12 +1,107 @@
-<nav>
-  <a routerLink="/">Main</a>
-  <a routerLink="/about-us">About us</a>
-</nav>
+<mat-sidenav-container autosize="true">
+  <mat-sidenav
+    [ngClass]="!isCollapsed ? 'expanded' : ''"
+    [mode]="isMobile ? 'over' : 'side'"
+    [opened]="isMobile ? 'false' : 'true'"
+  >
+    <div class="logo">
+      <a routerLink="/">
+        <img src="/assets/images/bronze_small.png" alt="" />
+        <span class="pre1">Wellican</span>
+        <span class="pre2">village</span>
+      </a>
+    </div>
 
-<router-outlet></router-outlet>
+    <ul class="nav">
+      <li>
+        <a routerLinkActive="active" routerLink="/kommunikaczii">
+          <span class="circle" aria-hidden="true"></span>
+          <span class="button-text">Коммуникации</span>
+        </a>
+      </li>
+      <li>
+        <a routerLinkActive="active" routerLink="/usloviya-pokupki">
+          <span class="circle" aria-hidden="true"></span>
+          <span class="button-text">Условия покупки</span>
+        </a>
+      </li>
+      <li>
+        <a routerLinkActive="active" routerLink="/o-kompanii">
+          <span class="circle" aria-hidden="true"></span>
+          <span class="button-text">О компании</span>
+        </a>
+      </li>
+    </ul>
 
+    <a class="btn-hover color-11" routerLink="/chose-cottage">
+      <mat-icon>cottage</mat-icon>
+      Выбрать коттедж
+    </a>
 
-<!--<div *ngFor="let product of (products$ | async)?.data">-->
-<!--  {{ product.attributes.title }}-->
-<!--</div>-->
-<!--<h2>TTT!!</h2>-->
+    <div class="foot">
+      <div class="rights">
+        2024 © Велликан village. <br />
+        Все права защищены.
+      </div>
+      <div class="privacy">
+        <a routerLink="/privacy-policy">Политика конфиденциальности</a>
+        <span>
+          *Не является публичной офертой. Все рекламные материалы и изображения
+          несут информационный характер с художественной обработкой, и могут не
+          совпадать с реальным продуктом. Отдельные услуги могут оказываться на
+          платной основе на условиях установленных рекламодателем.
+        </span>
+      </div>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <header>
+      @if (isMobile) {
+        <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      }
+
+      <div (click)="showLocation()" class="address_top">
+        <div class="icon_wrap">
+          <mat-icon>location_on</mat-icon>
+        </div>
+        <div class="address">
+          <span> Офис продаж: </span>
+          г. Симферополь <br />
+          Пр-кт Победы, 82
+        </div>
+      </div>
+
+      <a routerLink="/usloviya-pokupki" class="safety">
+        <div class="icon_wrap">
+          <mat-icon>safety_check</mat-icon>
+        </div>
+        <div class="text">
+          Безопасная <br />
+          сделка
+        </div>
+      </a>
+      <div class="phone_box">
+        <span class="phone">+7 (978) 232-31-30</span>
+        <button (click)="sendFeedback()" class="btn-more-animate learn-more">
+          <span class="circle" aria-hidden="true">
+            <span class="icon arrow"></span>
+          </span>
+          <span class="button-text white">Заказать звонок</span>
+        </button>
+      </div>
+    </header>
+    <main>
+      <router-outlet></router-outlet>
+      <div (click)="sendFeedback()" class="call_box">
+        <div class="icon_wrap">
+          <div class="trin-trin">
+            <mat-icon>call</mat-icon>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
