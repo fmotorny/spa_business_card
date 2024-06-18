@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NgStyle } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-main',
@@ -11,7 +12,7 @@ import { MatIcon } from '@angular/material/icon';
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
   slides = [
     {
       id: 1,
@@ -39,4 +40,15 @@ export class MainComponent {
     },
   ];
   slideConfig = { slidesToShow: 1, slidesToScroll: 1 };
+
+  constructor(
+    private meta: Meta,
+    private title: Title,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    this.meta.updateTag({ name: 'description', content: 'О компании' });
+    this.title.setTitle(this.route.snapshot.data['title']);
+  }
 }

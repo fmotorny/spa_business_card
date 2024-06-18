@@ -1,7 +1,6 @@
 @import "_colors";
 @import "button_animate";
 
-
 mat-toolbar {
   position: fixed;
   top: 0;
@@ -9,19 +8,19 @@ mat-toolbar {
 }
 
 mat-sidenav-container {
- // height: 100%;
+  // height: 100%;
   height: 100vh;
 }
 
 // Move the content down so that it won't be hidden by the toolbar
 mat-sidenav {
-//  padding-top: 3.5rem;
+  //  padding-top: 3.5rem;
   transition: width 0.3s ease;
   color: #fff;
-  background: #1B142B;
+  background: #1b142b;
   border: none;
   @media screen and (min-width: 600px) {
-  //  padding-top: 4rem;
+    //  padding-top: 4rem;
   }
 
   .entry {
@@ -35,7 +34,7 @@ mat-sidenav {
 // Move the content down so that it won't be hidden by the toolbar
 mat-sidenav-content {
   overflow-x: hidden;
- // padding-top: 3.5rem;
+  // padding-top: 3.5rem;
   @media screen and (min-width: 600px) {
     padding-top: 80px;
   }
@@ -80,7 +79,7 @@ mat-sidenav-content {
     position: relative;
 
     .circle {
-      @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+      @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
       position: relative;
       display: block;
       margin: 0;
@@ -90,7 +89,7 @@ mat-sidenav-content {
     }
 
     .button-text {
-      @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+      @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
       position: absolute;
       top: 0;
       left: 0;
@@ -129,14 +128,14 @@ mat-sidenav-content {
   cursor: pointer;
   margin: 0 auto;
   height: 110px;
-  text-align:center;
+  text-align: center;
   border: none;
   background-size: 300% 100%;
   display: flex;
   border-radius: 50%;
   align-items: center;
   justify-content: center;
-  transition: all .4s ease-in-out;
+  transition: all 0.4s ease-in-out;
   text-decoration: none;
   flex-flow: column;
   margin-top: 30px;
@@ -148,11 +147,18 @@ mat-sidenav-content {
 .btn-hover:hover {
   background-position: 100% 0;
 
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .btn-hover.color-11 {
-  background-image: linear-gradient(to right, #A67C52, #A67C52, #bd9d7d, #A67C52, #A67C52);
+  background-image: linear-gradient(
+    to right,
+    #a67c52,
+    #a67c52,
+    #bd9d7d,
+    #a67c52,
+    #a67c52
+  );
 }
 
 .foot {
@@ -199,10 +205,13 @@ header {
   align-items: center;
   justify-content: space-between;
   color: $white;
+  &.sub_page {
+    background: #ccc;
+  }
 }
 
 main {
- // padding: 80px 0 0 0;
+  // padding: 80px 0 0 0;
   position: absolute;
   top: 0;
   height: 100vh;
@@ -251,6 +260,20 @@ main {
   }
 }
 
+.page_box {
+  width: 100%;
+  height: 100vh;
+}
+.page_box_content {
+  padding: 80px 0 0 0;
+}
 
-
-
+.page_box_overflow {
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  height: calc(100vh - 80px);
+}
+.page_box_article {
+  padding: 30px 60px;
+}

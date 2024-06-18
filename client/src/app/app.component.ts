@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from './api/api.service';
 import { AsyncPipe, JsonPipe, NgClass, NgForOf, NgIf } from '@angular/common';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterEvent, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MatIcon } from '@angular/material/icon';
 import { MatNavList } from '@angular/material/list';
@@ -20,6 +20,7 @@ import {
 import { LocationPopupComponent } from './components/location-popup/location-popup.component';
 import { Dialog, DialogModule } from '@angular/cdk/dialog';
 import { FeedbackPopupComponent } from './components/feedback-popup/feedback-popup.component';
+import { filter, map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -53,16 +54,27 @@ export class AppComponent implements OnInit {
   sidenav!: MatSidenav;
   isMobile = true;
   isCollapsed = false;
+  url$!: Observable<string>;
   constructor(
     private api: ApiService,
     private observer: BreakpointObserver,
     private dialog: Dialog,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
       this.isMobile = screenSize.matches;
     });
+
+    this.url$ = this.router.events.pipe(
+      filter((ev) => ev instanceof NavigationEnd),
+      map((res) => {
+        const routerObjs = res as RouterEvent
+        return routerObjs.url;
+      }),
+    );
+
   }
 
   toggleMenu() {

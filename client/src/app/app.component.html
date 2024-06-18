@@ -55,7 +55,7 @@
     </div>
   </mat-sidenav>
   <mat-sidenav-content>
-    <header>
+    <header [class.sub_page]="(url$ | async) !== '/'">
       @if (isMobile) {
         <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
           <mat-icon>menu</mat-icon>
@@ -93,7 +93,20 @@
       </div>
     </header>
     <main>
-      <router-outlet></router-outlet>
+      @if ((url$ | async) === '/') {
+        <router-outlet></router-outlet>
+      } @else {
+        <div class="page_box">
+          <div class="page_box_content">
+            <div class="page_box_overflow">
+              <article class="page_box_article">
+                <router-outlet></router-outlet>
+              </article>
+            </div>
+          </div>
+        </div>
+      }
+
       <div (click)="sendFeedback()" class="call_box">
         <div class="icon_wrap">
           <div class="trin-trin">
