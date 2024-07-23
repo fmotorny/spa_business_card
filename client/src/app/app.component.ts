@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ApiService } from './api/api.service';
 import { AsyncPipe, JsonPipe, NgClass, NgForOf, NgIf } from '@angular/common';
 import { NavigationEnd, Router, RouterEvent, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatToolbar } from '@angular/material/toolbar';
@@ -12,11 +11,6 @@ import {
 } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatIconButton } from '@angular/material/button';
-import {
-  MAT_DIALOG_DEFAULT_OPTIONS,
-  MatDialog,
-  MatDialogModule,
-} from '@angular/material/dialog';
 import { LocationPopupComponent } from './components/location-popup/location-popup.component';
 import { Dialog, DialogModule } from '@angular/cdk/dialog';
 import { FeedbackPopupComponent } from './components/feedback-popup/feedback-popup.component';
@@ -48,15 +42,14 @@ import { filter, map, Observable } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   title = 'client';
-  products$ = this.api.getProductsTest();
-  pages$ = this.api.getPagesTest();
+  // products$ = this.api.getProductsTest();
+  // pages$ = this.api.getPagesTest();
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   isMobile = true;
   isCollapsed = false;
   url$!: Observable<string>;
   constructor(
-    private api: ApiService,
     private observer: BreakpointObserver,
     private dialog: Dialog,
     private router: Router
