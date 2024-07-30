@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
   constructor(
     private observer: BreakpointObserver,
     private dialog: Dialog,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit() {

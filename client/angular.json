@@ -24,7 +24,8 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/robots.txt"
             ],
             "styles": [
               "src/styles.scss",
@@ -144,7 +145,12 @@
             "optimization": false,
             "sourceMap": true,
             "extractLicenses": false,
-            "vendorChunk": true
+            "vendorChunk": true,
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/assets/vars"
+              ]
+            }
           },
           "configurations": {
             "development": {
