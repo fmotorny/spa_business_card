@@ -3,13 +3,13 @@ import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-privacy-policy',
+  selector: 'app-usloviya-pokupki',
   standalone: true,
   imports: [],
-  templateUrl: './privacy-policy.component.html',
-  styleUrl: './privacy-policy.component.scss'
+  templateUrl: './usloviya-pokupki.component.html',
+  styleUrl: './usloviya-pokupki.component.scss'
 })
-export class PrivacyPolicyComponent implements OnInit {
+export class UsloviyaPokupkiComponent implements OnInit {
   constructor(
     private meta: Meta,
     private title: Title,

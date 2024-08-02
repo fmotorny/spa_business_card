@@ -6,6 +6,7 @@ import * as express from 'express';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import bootstrap from './src/main.server';
+require('dotenv').config();
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -31,7 +32,7 @@ export function app(): express.Express {
   server.get('*', (req, res, next) => {
 
 
-  //  console.log('req TEST', req);
+
 
     const { protocol, originalUrl, baseUrl, headers } = req;
 

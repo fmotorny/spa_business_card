@@ -25,7 +25,12 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/robots.txt"
+              "src/robots.txt",
+              {
+                "glob": ".env",
+                "input": ".",
+                "output": "."
+              }
             ],
             "styles": [
               "src/styles.scss",
