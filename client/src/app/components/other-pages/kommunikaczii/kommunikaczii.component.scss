@@ -1,0 +1,37 @@
+@import "button_animate";
+
+.content_white {
+  width: fit-content;
+}
+
+.pre {
+  font-size: 20px;
+}
+
+.cont {
+  padding-top: 40px;
+  display: flex;
+  justify-content: space-around;
+  .it {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    span {
+      display: block;
+      font-size: 20px;
+      font-weight: bold;
+      padding-bottom: 15px;
+    }
+    img {
+      height: 110px;
+    }
+  }
+}
+
+.cont2 {
+  text-align: center;
+  padding-top: 30px;
+  p {
+    padding-bottom: 20px;
+  }
+}

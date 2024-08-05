@@ -8,7 +8,6 @@
       <a routerLink="/">
         <img src="/assets/images/bronze_small.png" alt="" />
         <span class="pre1">Wellican</span>
-        <span class="pre2">dom</span>
       </a>
     </div>
 
@@ -92,8 +91,9 @@
         </button>
       </div>
     </header>
-    <main>
-      @if ((url$ | async) === '/') {
+
+    <main [style.background-image]="'url(' + (bgPage$ | async) + ')'">
+      @if ((url$ | async) === "/") {
         <router-outlet></router-outlet>
       } @else {
         <div class="page_box">
@@ -112,7 +112,6 @@
           <div class="trin-trin">
             <mat-icon>call</mat-icon>
           </div>
-
         </div>
       </div>
     </main>

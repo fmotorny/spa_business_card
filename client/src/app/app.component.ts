@@ -1,6 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { AsyncPipe, JsonPipe, NgClass, NgForOf, NgIf } from '@angular/common';
-import { NavigationEnd, Router, RouterEvent, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { AsyncPipe, JsonPipe, NgClass, NgForOf, NgIf, NgStyle } from '@angular/common';
+import {
+  NavigationEnd,
+  Router,
+  RouterEvent,
+  RouterLink,
+  RouterLinkActive,
+  RouterOutlet, RouterState
+} from '@angular/router';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MatIcon } from '@angular/material/icon';
 import { MatNavList } from '@angular/material/list';
@@ -14,7 +21,8 @@ import { MatIconButton } from '@angular/material/button';
 import { LocationPopupComponent } from './components/location-popup/location-popup.component';
 import { Dialog, DialogModule } from '@angular/cdk/dialog';
 import { FeedbackPopupComponent } from './components/feedback-popup/feedback-popup.component';
-import { filter, map, Observable } from 'rxjs';
+import { delay, filter, map, Observable } from 'rxjs';
+import { PageBgLogicService } from './shared/services/page-bg.logic.service';
 
 @Component({
   selector: 'app-root',
@@ -37,6 +45,7 @@ import { filter, map, Observable } from 'rxjs';
     NgIf,
     RouterLinkActive,
     DialogModule,
+    NgStyle,
   ],
   standalone: true,
 })
@@ -49,6 +58,8 @@ export class AppComponent implements OnInit {
   isMobile = true;
   isCollapsed = false;
   url$!: Observable<string>;
+  bgPage$!: Observable<string> ;
+  private pageBgService = inject(PageBgLogicService);
   constructor(
     private observer: BreakpointObserver,
     private dialog: Dialog,
@@ -63,10 +74,13 @@ export class AppComponent implements OnInit {
     this.url$ = this.router.events.pipe(
       filter((ev) => ev instanceof NavigationEnd),
       map((res) => {
-        const routerObjs = res as RouterEvent
+        this.pageBgService.setBg('');
+        const routerObjs = res as RouterEvent;
         return routerObjs.url;
-      }),
+      })
     );
+
+    this.bgPage$ = this.pageBgService.getBg().pipe(delay(0));
 
   }
 
