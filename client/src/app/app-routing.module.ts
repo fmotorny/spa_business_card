@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     path: 'o-kompanii',
     component: AboutCompanyComponent,
-    data: { title: 'О компании' },
+    data: { title: 'О нас', routeBg: `${bgsUrl}/about-us.jpg`, },
   },
   {
     path: 'privacy-policy',

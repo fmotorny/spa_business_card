@@ -17,7 +17,7 @@
       </div>
       <label class="agreed">
         <input type="checkbox" [formControl]="form.controls.agreed">
-        <span>Вы даете согласие на <a routerLink="/privacy-policy" appBaseClosePopup>обработку персональных данных</a></span>
+        <span>Вы даете согласие на <a routerLink="/privacy-policy" target="_blank" appBaseClosePopup>обработку персональных данных</a></span>
       </label>
       <button (click)="send()" style="width: 210px;" class="btn-more-animate learn-more">
           <span class="circle" aria-hidden="true">
