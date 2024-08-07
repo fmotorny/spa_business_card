@@ -24,3 +24,61 @@
     }
   }
 }
+
+.portfolio {
+  margin-top: 30px;
+}
+
+.portfolio_list {
+  display: flex;
+  justify-content: space-between;
+  .it {
+    display: flex;
+    flex-flow: column;
+  }
+  .desc {
+    display: flex;
+    flex-flow: column;
+    padding-top: 15px;
+  }
+  .name {
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  .status {
+    display: flex;
+    justify-content: space-between;
+    .value {
+      color: $bronze;
+    }
+  }
+}
+
+.gall_prev {
+  width: 349px;
+  height: 150px;
+  background-image: var(--imagePrev);
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  position: relative;
+  transition: all ease .2s;
+  &:after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    background: url("/assets/icons/search.svg") no-repeat center $bronze;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background-size: 60%;
+    border-radius: 100%;
+  }
+  &:hover {
+    transform: scale(1.05);
+  }
+}
