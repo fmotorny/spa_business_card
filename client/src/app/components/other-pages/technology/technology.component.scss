@@ -1,3 +1,5 @@
+@import "colors";
+
 .content_white {
   width: fit-content;
 }
@@ -6,4 +8,53 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  max-width: 320px;
+  display: block;
+}
+
+.technology_desc {
+  font-size: 16px;
+  padding-left: 44px;
+  color: #4c4c4c;
+}
+
+cdk-accordion-item {
+  margin-bottom: 4px;
+  display: block;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.technology_title {
+  cursor: pointer;
+  padding-bottom: 5px;
+  &:after {
+    content: '';
+    display: inline-block;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    padding: 3px;
+    transform: rotate(-45deg);
+    position: relative;
+    top: -1px;
+    right: -5px;
+  }
+  &.expanded {
+    &:after {
+      transform: rotate(45deg);
+      top: -4px;
+    }
+  }
+}
+.index {
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  background: $bronze;
+  color: $white;
+  border-radius: 100px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
 }

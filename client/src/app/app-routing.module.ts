@@ -20,7 +20,7 @@ const routes: Routes = [
   {
     path: 'tekhnologiya-stroitelstva',
     component: TechnologyComponent,
-    data: { title: 'Технология строительства — КП «Wellican Dom»', routeBg: `${bgsUrl}/tekhnologiya-stroitelstva.jpg`, },
+    data: { title: 'Технология строительства — КП «Wellican Dom»', routeBg: `${bgsUrl}/tekhnologiya-stroitelstva_with_indexes.jpg`, },
   },
   {
     path: 'privacy-policy',
