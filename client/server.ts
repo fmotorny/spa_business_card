@@ -6,6 +6,7 @@ import * as express from 'express';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import bootstrap from './src/main.server';
+import { sendMsg } from './src/server/api/tgMsg';
 require('dotenv').config();
 
 // The Express app is exported so that it can be used by serverless Functions.
@@ -21,19 +22,23 @@ export function app(): express.Express {
   server.set('view engine', 'html');
   server.set('views', distFolder);
 
+
+
   // Example Express Rest API endpoints
+
+  server.post('/test-api-test', sendMsg);
+
   // server.get('/api/**', (req, res) => { });
   // Serve static files from /browser
-  server.get('*.*', express.static(distFolder, {
-    maxAge: '1y'
-  }));
+  server.get(
+    '*.*',
+    express.static(distFolder, {
+      maxAge: '1y',
+    }),
+  );
 
   // All regular routes use the Angular engine
   server.get('*', (req, res, next) => {
-
-
-
-
     const { protocol, originalUrl, baseUrl, headers } = req;
 
     commonEngine
@@ -54,6 +59,16 @@ export function app(): express.Express {
 function run(): void {
   const port = process.env['PORT'] || 4000;
 
+  if (process.env['ENVIRONMENT'] === 'development') {
+    console.log('CHECK RUN development!!!');
+  }
+
+  if (process.env['ENVIRONMENT'] === 'production') {
+    console.log('CHECK RUN production');
+  }
+
+  console.log(process.env['SECRET_KEY']);
+
   // Start up the Node server
   const server = app();
   server.listen(port, () => {
@@ -66,7 +81,7 @@ function run(): void {
 // The below code is to ensure that the server is run only when not requiring the bundle.
 declare const __non_webpack_require__: NodeRequire;
 const mainModule = __non_webpack_require__.main;
-const moduleFilename = mainModule && mainModule.filename || '';
+const moduleFilename = (mainModule && mainModule.filename) || '';
 if (moduleFilename === __filename || moduleFilename.includes('iisnode')) {
   run();
 }

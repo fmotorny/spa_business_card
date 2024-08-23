@@ -25,12 +25,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/robots.txt",
-              {
-                "glob": ".env",
-                "input": ".",
-                "output": "."
-              }
+              "src/robots.txt"
             ],
             "styles": [
               "src/styles.scss",
@@ -165,6 +160,7 @@
               "extractLicenses": false
             },
             "production": {
+              "optimization": true,
               "buildOptimizer": true,
               "outputHashing": "media",
               "fileReplacements": [
@@ -173,7 +169,6 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
               "sourceMap": false,
               "extractLicenses": true,
               "vendorChunk": false

@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "serve:prerender": "http-server -c-1 dist/client/browser",
     "dev:ssr": "ng run client:serve-ssr",
-    "serve:ssr": "node dist/client/server/main.js",
+    "serve:ssr": "nodemon dist/client/server/main.js",
     "build:ssr": "ng build --configuration=production && ng run client:server",
     "prerender": "ng run client:prerender"
   },
@@ -34,6 +34,7 @@
     "prettier": "^3.2.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "typescript-telegram-bot-api": "^0.2.1",
     "zone.js": "~0.14.2"
   },
   "devDependencies": {
