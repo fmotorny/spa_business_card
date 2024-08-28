@@ -18,7 +18,6 @@ import {
 import { ToastComponent } from '../toast/toast.component';
 import { DialogRef } from '@angular/cdk/dialog';
 import { ResponseModel } from '../../shared/models/response.model';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-feedback-popup',
