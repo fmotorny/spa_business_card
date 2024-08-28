@@ -1,53 +1,81 @@
-import { PrismaClient } from '@prisma/client';
 import * as https from 'https';
+import { ResponseStatusEnum } from '../../app/shared/models/response.model';
+import { FeedbackDataModel } from '../../app/shared/models/feedback-data.model';
+import { PrismaClient } from '@prisma/client';
 
 export const sendMsg = (req: any, res: any) => {
- // let reqBody = req.body;
-  let fields = [
-    "<b>Name</b>: " + 'Fed22',
-    "<b>Email</b>: " + 'Test TEST!!',
 
-  ];
-  let msg = "";
-  fields.forEach((field) => {
-    msg += field + "\n";
-  });
-  msg = encodeURI(msg);
-  https.get(
-    `https://api.telegram.org/bot${process.env["TG_BOT_TOKEN"]}/sendMessage?chat_id=${process.env["CHAT_ID"]}&parse_mode=html&text=${msg}`,
-    (response) => {
+  const prisma = new PrismaClient();
+  const feedbackData: FeedbackDataModel = req.body;
 
 
-     const prisma = new PrismaClient();
+  async function main() {
 
-      async function main() {
-        const user = await prisma.user.create({
-          data: {
-            name: 'Alice',
-            email: 'alice@prisma.io',
-          },
-        })
-        console.log(user)
-      }
+    sendToTg(feedbackData);
 
-      main()
-        .then(async () => {
-          await prisma.$disconnect()
-        })
-        .catch(async (e) => {
-          console.error(e)
-          await prisma.$disconnect()
-          process.exit(1)
-        })
+    const hasUser = await prisma.user.findFirst({
+      where: {
+        phone: feedbackData.phone,
+      },
+    });
 
-      console.log("statusCode:", response && response.statusCode);
-   //   console.log("body:", body);
-      if (response.statusCode === 200) {
-        res.status(200).json({ status: "ok", message: "Успешно отправлено!" });
-      }
-      if (response.statusCode === 400) {
-        res.status(400).json({ status: "error", message: "Произошла ошибка!" });
-      }
-    },
-  );
-}
+    if (hasUser) {
+      console.log('hasUser');
+      return Promise.reject(new Error());
+    }
+
+    await prisma.user.create({
+      data: {
+        name: feedbackData.name,
+        phone: feedbackData.phone,
+        email: feedbackData.email,
+      },
+    });
+  }
+
+  main()
+    .then(async () => {
+     await prisma.$disconnect();
+    })
+    .catch(async (e) => {
+      await prisma.$disconnect();
+    });
+
+  function sendToTg(feedbackData: FeedbackDataModel) {
+    let fields = [
+      '<b>Имя</b>: ' + feedbackData.name,
+      '<b>Телефон</b>: ' + `+7${feedbackData.phone}`,
+    ];
+    let msg = '';
+    fields.forEach((field) => {
+      msg += field + '\n';
+    });
+    msg = encodeURI(msg);
+
+    console.log(process.env['TG_BOT_TOKEN']);
+
+    https.get(
+      `https://api.telegram.org/bot${process.env['TG_BOT_TOKEN']}/sendMessage?chat_id=${process.env['CHAT_ID']}&parse_mode=html&text=${msg}`,
+      (response) => {
+        console.log('statusCode:', response && response.statusCode);
+        //   console.log("body:", body);
+        if (response.statusCode === 200) {
+          res
+            .status(200)
+            .json({
+              status: ResponseStatusEnum.success,
+              message: 'Заявка успешно отправлена!',
+            });
+        }
+        if (response.statusCode === 400) {
+          res
+            .status(400)
+            .json({
+              status: ResponseStatusEnum.error,
+              message: 'Произошла ошибка!',
+            });
+        }
+      },
+    );
+  }
+};

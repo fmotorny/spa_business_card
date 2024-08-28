@@ -25,6 +25,18 @@
 
 .control_box {
   margin-bottom: 15px;
+  flex-flow: column;
+  input {
+    flex: auto;
+  }
+}
+
+.error_field {
+  color: #ff5353;
+  font-size: 13px;
+  text-align: left;
+  padding-top: 5px;
+  padding-left: 20px;
 }
 
 .agreed {

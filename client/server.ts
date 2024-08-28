@@ -7,6 +7,7 @@ import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import bootstrap from './src/main.server';
 import { sendMsg } from './src/server/api/tgMsg';
+import * as bodyParser from 'body-parser';
 require('dotenv').config();
 
 // The Express app is exported so that it can be used by serverless Functions.
@@ -24,9 +25,14 @@ export function app(): express.Express {
 
 
 
+
+// parse application/json
+  server.use(bodyParser.json());
+  server.use(bodyParser.urlencoded({ extended: false }));
+
   // Example Express Rest API endpoints
 
-  server.post('/test-api-test', sendMsg);
+  server.post('/api/send-msg', sendMsg);
 
   // server.get('/api/**', (req, res) => { });
   // Serve static files from /browser

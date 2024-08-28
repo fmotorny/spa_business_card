@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:1337/api/'
+  apiUrl: 'http://localhost:1337/api/',
+  wellicanApi: 'http://localhost:4000/api/',
 };
 
 /*

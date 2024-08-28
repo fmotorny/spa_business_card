@@ -10,6 +10,7 @@ import {
   withFetch,
   withInterceptorsFromDi,
 } from '@angular/common/http';
+import { provideEnvironmentNgxMask } from 'ngx-mask';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,5 +18,6 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideHttpClient(withInterceptorsFromDi(), withFetch()),
     provideClientHydration(),
+    provideEnvironmentNgxMask(),
   ],
 };

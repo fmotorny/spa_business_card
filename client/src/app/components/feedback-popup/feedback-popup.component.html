@@ -6,23 +6,56 @@
     <div class="bg"></div>
     <div class="form">
       <img width="60" src="/assets/images/bronze_small.png" alt="" />
-      <div class="pre">
-        Оставьте свой номер, и мы перезвоним вам
+      <div class="pre">Оставьте свой номер, и мы перезвоним вам</div>
+      <div class="control_box">
+        <input
+          type="text"
+          placeholder="Ваше имя*"
+          [formControl]="form.controls.name"
+        />
+        @if (form.controls.name.touched && formIsSubmitting) {
+          @if (form.controls.name.getError("mustBiggerThanTwo")) {
+            <div class="error_field">Имя не может быть короче 3-х букв</div>
+          }
+          @if (form.controls.name.getError("fieldMustFill")) {
+            <div class="error_field">Имя не может быть пустым</div>
+          }
+        }
       </div>
       <div class="control_box">
-        <input type="text" placeholder="Ваше имя" [formControl]="form.controls.name">
-      </div>
-      <div class="control_box">
-        <input type="number" placeholder="Ваш телефон*" [formControl]="form.controls.phone">
+        <input
+          mask="(000) 000-00-00"
+          prefix="+7 "
+          [validation]="true"
+          placeholder="Ваш телефон*"
+          [formControl]="form.controls.phone"
+        />
+        @if (form.controls.phone.touched && formIsSubmitting) {
+          @if (form.controls.phone.getError("fieldMustFill")) {
+            <div class="error_field">Телефон не может быть пустым</div>
+          }
+          @if (form.controls.phone.getError("mask")) {
+            <div class="error_field">Телефон должен иметь формат x (xxx) xxx-xx-xx</div>
+          }
+        }
       </div>
       <label class="agreed">
-        <input type="checkbox" [formControl]="form.controls.agreed">
-        <span>Вы даете согласие на <a routerLink="/privacy-policy" target="_blank" appBaseClosePopup>обработку персональных данных</a></span>
+        <input type="checkbox" [formControl]="form.controls.agreed" />
+        <span
+          >Вы даете согласие на
+          <a routerLink="/privacy-policy" target="_blank" appBaseClosePopup
+            >обработку персональных данных</a
+          ></span
+        >
       </label>
-      <button (click)="send()" style="width: 210px;" class="btn-more-animate learn-more">
-          <span class="circle" aria-hidden="true">
-            <span class="icon arrow"></span>
-          </span>
+      <button
+        (click)="send()"
+        style="width: 210px"
+        class="btn-more-animate learn-more"
+      >
+        <span class="circle" aria-hidden="true">
+          <span class="icon arrow"></span>
+        </span>
         <span class="button-text white">Отправить заявку</span>
       </button>
     </div>
