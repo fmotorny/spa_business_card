@@ -90,6 +90,18 @@ main {
   background-repeat: no-repeat;
 }
 
+mat-snack-bar-container {
+  padding: 0;
+  div {
+    box-shadow: none !important;
+  }
+}
+
+.toast_box {
+  background: #ccc;
+  padding: 15px;
+  border-radius: 15px;
+}
 
 
 

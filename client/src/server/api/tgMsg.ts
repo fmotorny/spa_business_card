@@ -4,18 +4,15 @@ import { FeedbackDataModel } from '../../app/shared/models/feedback-data.model';
 import { PrismaClient } from '@prisma/client';
 
 export const sendMsg = (req: any, res: any) => {
-
   const prisma = new PrismaClient();
   const feedbackData: FeedbackDataModel = req.body;
 
-
   async function main() {
-
     sendToTg(feedbackData);
 
     const hasUser = await prisma.user.findFirst({
       where: {
-        phone: feedbackData.phone,
+        phone: { contains: feedbackData.phone },
       },
     });
 
@@ -27,7 +24,7 @@ export const sendMsg = (req: any, res: any) => {
     await prisma.user.create({
       data: {
         name: feedbackData.name,
-        phone: feedbackData.phone,
+        phone: `+7${feedbackData.phone}`,
         email: feedbackData.email,
       },
     });
@@ -35,7 +32,7 @@ export const sendMsg = (req: any, res: any) => {
 
   main()
     .then(async () => {
-     await prisma.$disconnect();
+      await prisma.$disconnect();
     })
     .catch(async (e) => {
       await prisma.$disconnect();
@@ -60,20 +57,16 @@ export const sendMsg = (req: any, res: any) => {
         console.log('statusCode:', response && response.statusCode);
         //   console.log("body:", body);
         if (response.statusCode === 200) {
-          res
-            .status(200)
-            .json({
-              status: ResponseStatusEnum.success,
-              message: 'Заявка успешно отправлена!',
-            });
+          res.status(200).json({
+            status: ResponseStatusEnum.success,
+            message: 'Заявка успешно отправлена!',
+          });
         }
         if (response.statusCode === 400) {
-          res
-            .status(400)
-            .json({
-              status: ResponseStatusEnum.error,
-              message: 'Произошла ошибка!',
-            });
+          res.status(400).json({
+            status: ResponseStatusEnum.error,
+            message: 'Произошла ошибка!',
+          });
         }
       },
     );

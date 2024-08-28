@@ -4,6 +4,8 @@ import { NgStyle } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
 import { Meta, Title } from '@angular/platform-browser';
+import { AboutProjectVideoPopupComponent } from '../../about-project-video.popup/about-project-video.popup.component';
+import { Dialog } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-main',
@@ -16,7 +18,7 @@ export class MainComponent implements OnInit {
   slides = [
     {
       id: 1,
-      img: '/assets/images/slides/render1.jpg',
+      img: '/assets/images/slides/slide1.jpg',
       title: 'Уникальное расположение',
       desc: 'Коттеджный поселок расположен в уникальном месте 15 минут до г. Симферополя и 20 минут до г. Алушты',
     },
@@ -28,7 +30,7 @@ export class MainComponent implements OnInit {
     },
     {
       id: 3,
-      img: '/assets/images/slides/render1.jpg',
+      img: '/assets/images/slides/slide1.jpg',
       title: 'Уникальное расположение',
       desc: 'Коттеджный поселок расположен в уникальном месте 15 минут до г. Симферополя и 20 минут до г. Алушты',
     },
@@ -44,11 +46,19 @@ export class MainComponent implements OnInit {
   constructor(
     private meta: Meta,
     private title: Title,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: Dialog,
   ) {}
 
   ngOnInit() {
     this.meta.updateTag({ name: 'description', content: 'О компании' });
     this.title.setTitle(this.route.snapshot.data['title']);
+  }
+
+  showVideo() {
+    console.log('showVideo');
+    this.dialog.open(AboutProjectVideoPopupComponent, {
+      disableClose: true,
+    });
   }
 }

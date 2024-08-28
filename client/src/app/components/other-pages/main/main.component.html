@@ -21,7 +21,7 @@
                 <span class="circle" aria-hidden="true">
                   <span class="icon arrow"></span>
                 </span>
-                <span class="button-text white">Видео о проекте</span>
+                <span (click)="showVideo()" class="button-text white">Видео о проекте</span>
               </button>
             }
             @if (slide.id === 2 || slide.id === 4) {
@@ -45,7 +45,7 @@
 
 <div class="info_bar_box">
   <div class="bar">
-    <div class="video">
+    <div (click)="showVideo()" class="video">
       <mat-icon>smart_display</mat-icon>
       Видео <br>
       о проекте
