@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NgStyle } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -13,6 +13,7 @@ import { Dialog } from '@angular/cdk/dialog';
   imports: [SlickCarouselModule, NgStyle, RouterLink, MatIcon],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
 export class MainComponent implements OnInit {
   slides = [

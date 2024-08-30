@@ -62,7 +62,7 @@ mat-sidenav-content {
     text-transform: uppercase;
     font-size: 20px;
     color: white;
-    border-bottom: 4px solid #A67C52;
+    border-bottom: 4px solid #a67c52;
     padding-bottom: 7px;
     margin: auto 83px;
   }
@@ -76,6 +76,12 @@ mat-sidenav-content {
 .nav {
   text-align: center;
   margin-top: 30px;
+  li {
+    display: flex;
+    height: 40px;
+    width: 100%;
+    flex-flow: column;
+  }
   a {
     text-decoration: none;
     color: $white;
@@ -288,10 +294,67 @@ main {
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #A67C52;
+    background-color: #a67c52;
     outline: 1px solid slategrey;
   }
 }
 .page_box_article {
   padding: 30px 60px;
+}
+
+.toast_bt {
+  padding: 0;
+  mat-icon {
+    font-size: 30px;
+    width: 33px;
+    height: 26px;
+  }
+}
+
+
+@media (max-width: 800px) {
+  header {
+    padding: 0 10px;
+  }
+
+  .nav {
+    li {
+      height: 34px;
+    }
+  }
+
+  .foot {
+    position: relative;
+  }
+
+  .phone_box {
+    button {
+      display: none;
+    }
+    .phone {
+      font-size: 23px;
+    }
+  }
+  .safety {
+    display: none;
+  }
+  .address_top {
+    display: none;
+  }
+  .call_box {
+    right: 20px;
+    .icon_wrap {
+      width: 48px;
+    }
+    .trin-trin {
+      height: 48px;
+    }
+    mat-icon {
+      font-size: 30px;
+      height: 30px;
+      width: 30px;
+    }
+  }
+
+
 }

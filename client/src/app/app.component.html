@@ -4,44 +4,47 @@
     [mode]="isMobile ? 'over' : 'side'"
     [opened]="isMobile ? 'false' : 'true'"
   >
-    <div class="logo">
-      <a routerLink="/">
-        <img src="/assets/images/bronze_small.png" alt="" />
-        <span class="pre1">Wellican</span>
+    <div class="side_bar_box">
+      <div class="logo">
+        <a routerLink="/">
+          <img src="/assets/images/bronze_small.png" alt="" />
+          <span class="pre1">Wellican</span>
+        </a>
+      </div>
+
+      <ul class="nav">
+        <li>
+          <a routerLinkActive="active" routerLink="/tekhnologiya-stroitelstva">
+            <span class="circle" aria-hidden="true"></span>
+            <span class="button-text">Технология строительства</span>
+          </a>
+        </li>
+        <li>
+          <a routerLinkActive="active" routerLink="/kommunikaczii">
+            <span class="circle" aria-hidden="true"></span>
+            <span class="button-text">Коммуникации</span>
+          </a>
+        </li>
+        <li>
+          <a routerLinkActive="active" routerLink="/usloviya-pokupki">
+            <span class="circle" aria-hidden="true"></span>
+            <span class="button-text">Условия покупки</span>
+          </a>
+        </li>
+        <li>
+          <a routerLinkActive="active" routerLink="/o-kompanii">
+            <span class="circle" aria-hidden="true"></span>
+            <span class="button-text">О нас</span>
+          </a>
+        </li>
+      </ul>
+
+      <a class="btn-hover color-11" routerLink="/chose-cottage">
+        <mat-icon>cottage</mat-icon>
+        Выбрать коттедж
       </a>
     </div>
 
-    <ul class="nav">
-      <li>
-        <a routerLinkActive="active" routerLink="/tekhnologiya-stroitelstva">
-          <span class="circle" aria-hidden="true"></span>
-          <span class="button-text">Технология строительства</span>
-        </a>
-      </li>
-      <li>
-        <a routerLinkActive="active" routerLink="/kommunikaczii">
-          <span class="circle" aria-hidden="true"></span>
-          <span class="button-text">Коммуникации</span>
-        </a>
-      </li>
-      <li>
-        <a routerLinkActive="active" routerLink="/usloviya-pokupki">
-          <span class="circle" aria-hidden="true"></span>
-          <span class="button-text">Условия покупки</span>
-        </a>
-      </li>
-      <li>
-        <a routerLinkActive="active" routerLink="/o-kompanii">
-          <span class="circle" aria-hidden="true"></span>
-          <span class="button-text">О нас</span>
-        </a>
-      </li>
-    </ul>
-
-    <a class="btn-hover color-11" routerLink="/chose-cottage">
-      <mat-icon>cottage</mat-icon>
-      Выбрать коттедж
-    </a>
 
     <div class="foot">
       <div class="rights">
@@ -62,7 +65,7 @@
   <mat-sidenav-content>
     <header [class.sub_page]="(url$ | async) !== '/'">
       @if (isMobile) {
-        <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
+        <button class="toast_bt" mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
           <mat-icon>menu</mat-icon>
         </button>
       }

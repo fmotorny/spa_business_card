@@ -58,3 +58,11 @@
     accent-color: $bronze;
   }
 }
+
+@media (max-width: 800px) {
+  .feedback_box {
+    .bg {
+      display: none;
+    }
+  }
+}
