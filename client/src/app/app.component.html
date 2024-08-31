@@ -2,7 +2,7 @@
   <mat-sidenav
     [ngClass]="!isCollapsed ? 'expanded' : ''"
     [mode]="isMobile ? 'over' : 'side'"
-    [opened]="isMobile ? 'false' : 'true'"
+    opened
   >
     <div class="side_bar_box">
       <div class="logo">
@@ -43,6 +43,19 @@
         <mat-icon>cottage</mat-icon>
         Выбрать коттедж
       </a>
+
+
+      <div (click)="showLocation()" class="address_sidebar">
+        <div class="icon_wrap">
+          <mat-icon>location_on</mat-icon>
+        </div>
+        <div class="address">
+          <span> Офис продаж: </span>
+          г. Симферополь <br />
+          Пр-кт Победы, 82
+        </div>
+      </div>
+
     </div>
 
 

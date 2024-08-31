@@ -41,6 +41,18 @@ export class MainComponent implements OnInit {
       title: 'Коттеджный поселок комфорт-класса от 8 млн. ₽',
       desc: 'Приватная территория с КПП и собственной службой безопасности',
     },
+    {
+      id: 5,
+      img: '/assets/images/slides/slide1.jpg',
+      title: 'Уникальное расположение',
+      desc: 'Коттеджный поселок расположен в уникальном месте 15 минут до г. Симферополя и 20 минут до г. Алушты',
+    },
+    {
+      id: 6,
+      img: '/assets/images/slides/render2.jpg',
+      title: 'Коттеджный поселок комфорт-класса от 8 млн. ₽',
+      desc: 'Приватная территория с КПП и собственной службой безопасности',
+    },
   ];
   slideConfig = { slidesToShow: 1, slidesToScroll: 1 };
 
