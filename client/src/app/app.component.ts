@@ -1,4 +1,10 @@
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import {
   AsyncPipe,
   JsonPipe,
@@ -28,7 +34,7 @@ import { MatIconButton } from '@angular/material/button';
 import { LocationPopupComponent } from './components/location-popup/location-popup.component';
 import { Dialog, DialogModule } from '@angular/cdk/dialog';
 import { FeedbackPopupComponent } from './components/feedback-popup/feedback-popup.component';
-import { delay, filter, map, Observable, tap } from 'rxjs';
+import { BehaviorSubject, delay, filter, map, Observable, tap } from 'rxjs';
 import { PageBgLogicService } from './shared/services/page-bg.logic.service';
 
 @Component({
@@ -57,6 +63,7 @@ import { PageBgLogicService } from './shared/services/page-bg.logic.service';
   standalone: true,
 })
 export class AppComponent implements OnInit {
+  isLoaded$ = new BehaviorSubject(false);
   title = 'client';
   // products$ = this.api.getProductsTest();
   // pages$ = this.api.getPagesTest();
@@ -73,6 +80,13 @@ export class AppComponent implements OnInit {
     private router: Router,
   ) {}
 
+  @HostListener('window:load', ['$event'])
+  onPageLoad(event: Event) {
+    setTimeout(() => {
+      this.isLoaded$.next(true);
+    }, 1000);
+  }
+
   ngOnInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
       this.isMobile = screenSize.matches;
@@ -87,7 +101,7 @@ export class AppComponent implements OnInit {
       filter((ev) => ev instanceof NavigationEnd),
       tap(() => {
         if (this.isMobile) {
-          this.sidenav.close();
+          this.sidenav?.close();
         }
       }),
       map((res) => {

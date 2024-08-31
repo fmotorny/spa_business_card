@@ -1,4 +1,4 @@
-<mat-sidenav-container autosize="true">
+<mat-sidenav-container autosize="true" [class.loaded]="(isLoaded$ | async)">
   <mat-sidenav
     [ngClass]="!isCollapsed ? 'expanded' : ''"
     [mode]="isMobile ? 'over' : 'side'"
