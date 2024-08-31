@@ -28,7 +28,7 @@ import { MatIconButton } from '@angular/material/button';
 import { LocationPopupComponent } from './components/location-popup/location-popup.component';
 import { Dialog, DialogModule } from '@angular/cdk/dialog';
 import { FeedbackPopupComponent } from './components/feedback-popup/feedback-popup.component';
-import { BehaviorSubject, delay, filter, map, Observable, tap } from 'rxjs';
+import { delay, filter, map, Observable, tap } from 'rxjs';
 import { PageBgLogicService } from './shared/services/page-bg.logic.service';
 
 @Component({
