@@ -11,7 +11,7 @@ mat-sidenav-container {
     background: #ccc;
     top: 0;
     z-index: 10000;
-    transition: all ease 1s;
+    transition: all ease 1.5s;
   }
   &:after {
     content: 'Загрузка...';
@@ -23,15 +23,15 @@ mat-sidenav-container {
     background: #ccc;
     z-index: 10000;
     bottom: 0;
-    transition: all ease 1s;
+    transition: all ease 1.5s;
   }
 
   &.loaded {
     &:before {
-      transform: translateY(-200%);
+      transform: translateY(-100%);
     }
     &:after {
-      transform: translateY(200%);
+      transform: translateY(100%);
       content: '';
     }
   }
@@ -272,6 +272,7 @@ main {
   top: 0;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 .address_top {
@@ -328,7 +329,7 @@ main {
   overflow-y: auto;
   overflow-x: hidden;
   width: 100%;
-  height: calc(100% - 80px);
+  height: 100vh;
 
   &::-webkit-scrollbar {
     width: 6px;
@@ -345,6 +346,7 @@ main {
 }
 .page_box_article {
   padding: 30px 60px;
+  padding-bottom: 100px;
 }
 
 .toast_bt {
@@ -423,5 +425,11 @@ main {
       height: 30px;
       width: 30px;
     }
+  }
+
+  .page_box_article {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 200px;
   }
 }
